@@ -18,9 +18,10 @@
     $cid = $_SESSION['cid'];
     $hn =  $_SESSION['hn'];
 
-    $searchuser = "SELECT p.fname,p.lname,pty.name as pttype,p.addrpart,dbs.province,dbs.amphur,district
+    $searchuser = "SELECT p.fname,p.lname,pty.name as pttype,p.addrpart,dbs.province,dbs.amphur,district,p.moopart,p.hometel,pocode
     FROM patient p
      INNER JOIN dbaddress dbs on dbs.iddistrict =  concat(p.chwpart,p.amppart,p.tmbpart)
+     INNER JOIN thaiaddress tha on tha.addressid = concat(p.chwpart,p.amppart,p.tmbpart)
      left join pttype pty on pty.pttype = p.pttype
     where p.hn = '".$_SESSION['hn']."' and p.cid = '".$_SESSION['cid']."' ";
     $have_user_yet = pg_query($conn, $searchuser);
@@ -88,19 +89,19 @@
             </div>
             <div class="uk-width-1-2@m">
                 <label class="h2">ตำบล / แขวง</label>
-                <input name="district" class="uk-input uk-width-1-1" type="text">
+                <input name="district" class="uk-input uk-width-1-1" type="text" value="<?php echo $result['district']?>">
             </div>
             <div class="uk-width-1-2@m">
                 <label class="h2">อำเภอ / เขต</label>
-                <input name="amphoe" class="uk-input uk-width-1-1" type="text">
+                <input name="amphoe" class="uk-input uk-width-1-1" type="text" value="<?php echo $result['amphur']?>">
             </div>
             <div class="uk-width-1-2@m">
                 <label class="h2">จังหวัด</label>
-                <input name="province" class="uk-input uk-width-1-1" type="text">
+                <input name="province" class="uk-input uk-width-1-1" type="text" value="<?php echo $result['province']?>">
             </div>
             <div class="uk-width-1-2@m">
                 <label class="h2">รหัสไปรษณีย์</label>
-                <input name="zipcode" class="uk-input uk-width-1-1" type="text">
+                <input name="zipcode" class="uk-input uk-width-1-1" type="text" value="<?php echo $result['province']?>">
             </div>
             <div class="uk-width-1-2@m">
                 <button class="button" style="vertical-align:middle;font-size:16px"><span> ยืนยัน/แก้ไข ข้อมูล </span></button>

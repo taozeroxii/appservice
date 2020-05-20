@@ -55,7 +55,7 @@
             echo $_SESSION['cid'] =$accoutUsser['cid'];
             //$password = $con->real_escape_string md5((md5($_POST['cid'])));//decode
             echo "<script>alertify.success('พบข้อมูล');</script>";
-            header('location:/apiservice/index.php'); 
+            header('location:/apiservice2/appservice/index.php'); 
         } else {
             echo "<script>alertify.error('ไม่พบข้อมูลผู้ป่วย');</script>";
         }

@@ -13,11 +13,16 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/uikit/3.0.0-beta.20/css/uikit.css">
     <link rel="stylesheet" href="jquery.Thailand.js/dist/jquery.Thailand.min.css">
     <link rel="stylesheet" type="text/css" href="css/style.css">
-    <?php include './confighis/config.php';
+
+    <?php include './config/pg_con.class.php';
     $cid = $_SESSION['cid'];
     $hn =  $_SESSION['hn'];
 
-    echo $searchuser = "SELECT * FROM patient where  hn = '" . $hn  . "' and cid = '" . $cid . "'  ";
+    $searchuser = "SELECT p.fname,p.lname,pty.name as pttype,p.addrpart,dbs.province,dbs.amphur,district
+    FROM patient p
+     INNER JOIN dbaddress dbs on dbs.iddistrict =  concat(p.chwpart,p.amppart,p.tmbpart)
+     left join pttype pty on pty.pttype = p.pttype
+    where p.hn = '".$_SESSION['hn']."' and p.cid = '".$_SESSION['cid']."' ";
     $have_user_yet = pg_query($conn, $searchuser);
     $result = pg_fetch_assoc($have_user_yet);
 

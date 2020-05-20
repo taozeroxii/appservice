@@ -53,7 +53,7 @@
 
 <body>
     <div class="uk-container uk-padding">
-        <h1>ข้อมูลxxxxxxxxxx</h1>
+        <h1>ข้อมูลของคุณ <?php echo $result['fname'].' '. $result['lname']?></h1>
         <div id="loader">
             <div uk-spinner></div> รอสักครู่ กำลังโหลดฐานข้อมูล...
         </div>
@@ -101,7 +101,7 @@
             </div>
             <div class="uk-width-1-2@m">
                 <label class="h2">รหัสไปรษณีย์</label>
-                <input name="zipcode" class="uk-input uk-width-1-1" type="text" value="<?php echo $result['province']?>">
+                <input name="zipcode" class="uk-input uk-width-1-1" type="text" value="<?php echo $result['pocode']?>">
             </div>
             <div class="uk-width-1-2@m">
                 <button class="button" style="vertical-align:middle;font-size:16px"><span> ยืนยัน/แก้ไข ข้อมูล </span></button>

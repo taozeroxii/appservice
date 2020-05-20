@@ -38,10 +38,12 @@
     </div>
 
     <?php
-    include './config/pg_con.class.php';
+    include 'config/pg_con.class.php';
     if (isset($_POST['submit'])) {
-        /* echo $hn = $_POST['hn'];
-        echo $cid = $_POST['cid'];*/
+        /* 
+           echo $hn = $_POST['hn'];
+           echo $cid = $_POST['cid'];
+        */
         $searchuser = "SELECT hn,cid FROM patient where  hn = '" . $_POST['hn'] . "' and cid = '" . $_POST['cid'] . "'  ";
         $have_user_yet = pg_query($conn, $searchuser);
         $count = pg_num_rows($have_user_yet);
@@ -55,7 +57,7 @@
             echo $_SESSION['cid'] =$accoutUsser['cid'];
             //$password = $con->real_escape_string md5((md5($_POST['cid'])));//decode
             echo "<script>alertify.success('พบข้อมูล');</script>";
-            header('location:/apiservice2/appservice/index.php'); 
+            header('location:senddata.php'); 
         } else {
             echo "<script>alertify.error('ไม่พบข้อมูลผู้ป่วย');</script>";
         }

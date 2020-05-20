@@ -3,7 +3,6 @@ session_start();
 include"config/pg_con.class.php";
 include"config/func.class.php";
 
-//$hn =  $_GET[''];
 $hn =  "000191812";
 
 

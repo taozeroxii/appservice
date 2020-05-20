@@ -26,6 +26,8 @@
                            ,p.moopart     AS moo
                            ,p.mobile_phone_number AS phone
                            ,tha.pocode AS zipcode
+                           ,p.cid      AS cid
+                           ,p.hn       AS hn
                     FROM patient p
                     INNER JOIN dbaddress dbs    ON dbs.iddistrict   = concat(p.chwpart,p.amppart,p.tmbpart)
                     INNER JOIN thaiaddress tha  ON tha.addressid    = concat(p.chwpart,p.amppart,p.tmbpart)
@@ -64,6 +66,8 @@
         </div>
         <form id="senddata" class="demo" style="display:none;" autocomplete="off" uk-grid method="post" action="app.php">
 
+                <input type="hidden" name="hn" value="<?php echo $result['hn']?>">
+                <input type="hidden" name="cid" value="<?php echo $result['cid']?>">
             <div class="uk-width-1-2@m">
                 <label class="h2">ชื่อ</label>
                 <input name="fname" class="uk-input uk-width-1-1" type="text" value="<?php echo $result['fname']?>">

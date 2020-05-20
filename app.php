@@ -1,12 +1,20 @@
 <?php
 session_start();
+date_default_timezone_set("Asia/Bangkok");
 include"config/pg_con.class.php";
+include"config/my_con.class.php";
 include"config/func.class.php";
+$cid    = $_POST['cid'];
+//$hn     = $_POST['hn'];
+$hn     = "000585078";
+$searchuser = " SELECT  id,order_number_check,fname,lname,phone,lineid,adddess,cid,hn
+                moo,district,amphoe,province,zipcode,qcode,keycode,modify,status,flage,fileimg,dateupdate
+                FROM web_data_patient
+                WHERE hn = '$hn' ";
+$query = mysqli_query($con,$searchuser);
+$row_result = mysqli_fetch_array($query) 
 
-$hn =  "000191812";
-
-
-?>
+    ?>
 <!DOCTYPE html>
 <html lang="th">
 <head>
@@ -62,7 +70,7 @@ $result = pg_query($conn, $sql);
                 </div>
             </div>
             <br>
-        <?php
+            <?php
         }
         ?>
     </div>

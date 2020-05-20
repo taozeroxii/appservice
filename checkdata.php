@@ -38,7 +38,7 @@
     </div>
 
     <?php
-    include './confighis/config.php';
+    include './config/pg_con.class.php';
     if (isset($_POST['submit'])) {
         /* echo $hn = $_POST['hn'];
         echo $cid = $_POST['cid'];*/

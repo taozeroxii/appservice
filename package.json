@@ -1,0 +1,14 @@
+{
+  "name": "checkdata",
+  "version": "1.0.0",
+  "description": "ตรวจสอบข้อมูลการจัดส่งยาทางไปรษณีย์",
+  "main": "jquery.Thailand.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "alertifyjs": "^1.13.1"
+  }
+}

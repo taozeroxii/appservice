@@ -151,6 +151,7 @@
             console.log('รหัสไปรษณีย์', this.value);
         });
     </script>
+
 </body>
 
 </html>

@@ -8,13 +8,13 @@ $cid    = $_POST['cid'];
 //$hn     = $_POST['hn'];
 $hn     = "000585078";
 $searchuser = " SELECT  id,order_number_check,fname,lname,phone,lineid,adddess,cid,hn
-                moo,district,amphoe,province,zipcode,qcode,keycode,modify,status,flage,fileimg,dateupdate
-                FROM web_data_patient
-                WHERE hn = '$hn' ";
+moo,district,amphoe,province,zipcode,qcode,keycode,modify,status,flage,fileimg,dateupdate
+FROM web_data_patient
+WHERE hn = '$hn' ";
 $query = mysqli_query($con,$searchuser);
 $row_result = mysqli_fetch_array($query) 
 
-    ?>
+?>
 <!DOCTYPE html>
 <html lang="th">
 <head>
@@ -52,7 +52,8 @@ $result = pg_query($conn, $sql);
     <div class="uk-container uk-padding">
         <h1>เลือกรายการนัด</h1>
         <hr>
-        <form id="" class=""  autocomplete="">
+
+        <form id="save" class="" autocomplete="" uk-grid method="get" action="save.php">
             <?php
             $rw=0;
             while($row_result = pg_fetch_array($result)) 
@@ -61,7 +62,7 @@ $result = pg_query($conn, $sql);
                 ?>
                 <div class="">
                     <div>
-                      <input type="radio" id="<?=$rw;?>" name="select" value="2">
+                      <input type="radio" id="<?=$rw;?>"  name="dateapp" value="<?php echo thaiDateFULL($row_result['dateapp']); ?>">
                       <label for="<?=$rw;?>">
                         <h2 class="hh2"><?php echo thaiDateFULL($row_result['dateapp']); ?></h2>
                         <p class="p1"><?php echo $row_result['clinic']; ?></p>
@@ -69,10 +70,17 @@ $result = pg_query($conn, $sql);
                     </label>
                 </div>
             </div>
+                      <input type="hidden" id="<?=$rw;?>" name="clinic" value="<?php echo $row_result['clinic']; ?>">
+                      <input type="hidden" id="<?=$rw;?>" name="doctor" value="<?php echo $row_result['doctor'];?>">
             <br>
             <?php
         }
         ?>
+
+        <div class="uk-width-1-2@m">
+            <button class="button" id="submit" name="submit" style="vertical-align:middle;font-size:16px"><span> ยืนยันรายการ </span></button>
+        </div>
+    </form>
     </div>
 </body>
 </html>
